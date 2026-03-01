@@ -1,60 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>500 - Server Error</title>
-    <link rel="stylesheet" href="/styles/style.css">
-    <link rel="icon" type="image/png" href="/Laurea_favicon.png">
-    <style>
-        .error-container {
-            text-align: center;
-            padding: 50px 20px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>500 — Server Issue</title>
+  <link rel="stylesheet" href="/styles/style.css">
+  <style>
+    .error-wrapper{
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
 
-        .error-code {
-            font-size: 120px;
-            font-weight: bold;
-            color: #e67e22;
-            margin: 0;
-            line-height: 1;
-        }
+    .error-number{
+      font-size: 6rem;
+      font-weight: 700;
+      color: #F3C6D3;
+      letter-spacing: 4px;
+      margin-bottom: 0.6rem;
+    }
 
-        .error-message {
-            font-size: 24px;
-            color: #555;
-            margin: 20px 0;
-        }
-    </style>
+    .error-wrapper h2{
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .error-wrapper p{
+      margin-bottom: 1.2rem;
+    }
+
+    .error-wrapper a{
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #ffffff;
+      background: #F3C6D3;
+      transition: background 0.2s ease;
+    }
+
+    .error-wrapper a:hover{
+      background: #F8D9E2;
+    }
+  </style>
 </head>
 
 <body>
+  <header>
+    <h1>Something went wrong</h1>
     <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-        <a href="/api/time">API Time</a>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
     </nav>
+  </header>
 
-    <div class="container error-container">
-        <div class="error-code">500</div>
-        <h1 class="error-message">⚠️ Internal Server Error</h1>
-
-        <div class="card">
-            <p>Something went wrong on our end. We're working to fix it!</p>
-            <p>This 500 error is being handled by <strong>Express error middleware</strong>.</p>
-
-            <div class="btn-group">
-                <a href="/" class="btn">← Go Home</a>
-                <a href="/contact" class="btn btn-secondary">Report Issue</a>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>Workshop 03 - Express.js | ©Jari Kovis Laurea FullStack 2026</p>
-    </footer>
+  <main>
+    <section class="error-wrapper">
+      <div class="error-number">500</div>
+      <h2>We’re having trouble behind the scenes</h2>
+      <p>The server encountered an issue and couldn’t complete your request.</p>
+      <p>Please try again in a little while.</p>
+      <a href="/">Return to Home</a>
+    </section>
+  </main>
 </body>
-
 </html>
