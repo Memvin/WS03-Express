@@ -1,300 +1,149 @@
-# Workshop 03 – Building a Web Server with Express.js
+# Workshop 03 -- Building a Web Server with Express.js
 
 ## Overview
-In this workshop, you will learn the fundamentals of **Express.js framework** and **routing** by building a web server using one of the most popular Node.js frameworks.
 
-This workshop focuses on **practical understanding** of how Express simplifies web server development compared to using Node.js's built-in HTTP module.
+This project demonstrates how to build a web server using the
+**Express.js framework**, including routing, middleware, static file
+serving, and structured API endpoints.
 
----
+The goal of this workshop was to understand how Express simplifies web
+server development compared to Node.js's built-in HTTP module.
+
+------------------------------------------------------------------------
 
 ## Learning Objectives
-By the end of this workshop, you should be able to:
-- Create a web server using Express.js framework
-- Implement routing using Express Router
-- Serve static files using Express middleware
-- Handle 404 (Not Found) and 500 (Server Error) responses
-- Understand Express middleware concepts
-- Create RESTful API endpoints with Express
 
----
+By completing this workshop, the following concepts were implemented:
 
-## Topics Covered
-- Express.js fundamentals
-- Express Router for routing
-- Middleware (built-in and custom)
-- Serving static files with `express.static()`
-- HTTP status codes and response methods
-- Error handling middleware
-- JSON API endpoints
-- Request and response objects
+-   Creating a web server using Express.js
+-   Implementing routing using Express Router
+-   Serving static files using Express middleware
+-   Handling 404 (Not Found) and 500 (Server Error) responses
+-   Understanding Express middleware order
+-   Creating JSON API endpoints
 
----
-
-## Prerequisites
-Before starting this workshop, make sure you have:
-- Basic knowledge of JavaScript
-- Understanding of HTML and CSS
-- Completed Workshop 02 (Node.js HTTP Server) or equivalent knowledge
-- Installed:
-  - Node.js (LTS version recommended)
-  - npm (comes with Node.js)
-  - Git
-  - A code editor (VS Code recommended)
-
----
+------------------------------------------------------------------------
 
 ## Project Description
-You will build:
-> **An Express.js web server that serves multiple HTML pages, CSS files, and provides API endpoints**
 
-The server will:
-- Serve a homepage, about page, and contact page
-- Load CSS stylesheets using Express static middleware
-- Display custom 404 and 500 error pages
-- Provide a JSON API endpoint for current date/time
-- Use Express Router for organized routing
+This Express.js server:
 
----
+-   Serves a homepage, about page, and contact page
+-   Loads CSS stylesheets using Express static middleware
+-   Displays custom 404 and 500 error pages
+-   Provides JSON API endpoints
+-   Uses Express Router for organized API routing
 
-## Getting Started
-
-### 1️⃣ Clone the repository
-```bash
-git clone https://github.com/Laurea-FullStack-2026/Workshop03_Express.git
-cd Workshop03_Express
-```
-
-### 2️⃣ Clean up the repository
-After cloning, remove files and folders you don't need for your solution:
-
-```bash
-
-# Remove the tuntiharjoitukset folder (example files)
-Remove-Item -Path "tuntiharjoitukset" -Recurse -Force
-
-# Keep only:
-# - starter/ (your working directory)
-# - README.md
-# - requirements.md
-```
-
-### 3️⃣ Reinitialize the git repository
-```bash
-# Remove the cloned git history
-Remove-Item -Path ".git" -Recurse -Force
-
-# Initialize a new repository
-git init
-
-# Add your files
-git add .
-
-# Create the first commit
-git commit -m "Initial commit - Workshop03 Express"
-```
-
-### 4️⃣ Navigate to the starter folder
-```bash
-cd starter
-```
-
-### 5️⃣ Install dependencies
-```bash
-npm install
-```
-*Note: This project requires Express.js as a dependency.*
-
-### 6️⃣ Start working on the tasks
-Open `server.js` and follow the TODO comments to complete each task.
-
----
+------------------------------------------------------------------------
 
 ## Project Structure
 
-```
-Workshop03_Express/
-├── starter/              # Your working directory
-│   ├── server.js        # Main server file (complete the TODOs here)
-│   ├── package.json     # Project configuration with Express dependency
-│   ├── public/          # Static files directory
-│   │   ├── index.html   # Home page
-│   │   ├── about.html   # About page
-│   │   ├── contact.html # Contact page
-│   │   ├── 404.html     # Custom 404 error page
-│   │   ├── 500.html     # Custom 500 error page
-│   │   └── styles/
-│   │       └── style.css # Stylesheet
-│   └── README.md
-│
-├── requirements.md      # Detailed task requirements
-└── README.md           # This file
-```
+    WS03-Express/
+    ├── starter/
+    │   ├── server.js
+    │   ├── package.json
+    │   ├── package-lock.json
+    │   ├── public/
+    │   │   ├── index.html
+    │   │   ├── about.html
+    │   │   ├── contact.html
+    │   │   ├── 404.html
+    │   │   ├── 500.html
+    │   │   └── styles/
+    │   │       └── style.css
+    │
+    ├── .gitignore
+    ├── README.md
+    └── requirements.md
 
----
+------------------------------------------------------------------------
 
-## Tasks Overview
+## Implemented Features
 
-Complete the following tasks in order:
+### Express App Setup
 
-### ✅ Task 1 – Create Express App
-- Create an Express application instance
-- Define the PORT constant (use 3000)
+-   Created Express application instance
+-   Configured server to run on port 3000
 
-### ✅ Task 2 – Serve Static Files
-- Configure Express to serve static files from the `public` directory
-- Use `express.static()` middleware to serve HTML, CSS, and other static assets
+### Static File Middleware
 
-### ✅ Task 3 – Add Route Handlers
-- Create route handlers for:
-  - Home page (`GET /`)
-  - About page (`GET /about`)
-  - Contact page (`GET /contact`)
-- Use `res.sendFile()` to serve HTML files
+-   Configured `express.static()` to serve files from the `public`
+    directory
 
-### ✅ Task 4 – Create API Endpoint
-- Create a `/api/time` endpoint that returns current date/time as JSON
-- Use `res.json()` for JSON responses
+### Route Handlers
 
-### 🌟 Bonus: Express Router (Task 6)
-- Organize API routes using Express Router
-- Create a separate router for API endpoints
-- Mount the router on `/api` path
+-   `GET /` → Home page
+-   `GET /about` → About page
+-   `GET /contact` → Contact page
 
-### ✅ Task 5 – Error Handling Middleware
-- Implement custom 404 error handler middleware
-- Implement custom 500 error handler middleware
-- Remember: Error handlers must be placed AFTER all other routes
-- 404 handler catches unmatched routes
-- 500 handler catches application errors
+### API Endpoints (Express Router)
 
-### ✅ Start the Server
-- Uncomment `app.listen()` to start the server on PORT 3000
-- Log startup message with available routes
+-   `GET /api/time` → Returns current date and timestamp
+-   `GET /api/info` → Returns server metadata
 
----
+### Error Handling Middleware
 
-## Running Your Server
+-   Custom 404 page for unmatched routes
+-   Custom 500 page for server errors
 
-1. Make sure you're in the `starter` directory
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Run the server:
-   ```bash
-   npm start
-   ```
-   Or:
-   ```bash
-   node server.js
-   ```
-4. Open your browser and visit:
-   - `http://localhost:3000` - Home page
-   - `http://localhost:3000/about` - About page
-   - `http://localhost:3000/contact` - Contact page
-   - `http://localhost:3000/nonexistent` - Test 404 error
-   - `http://localhost:3000/api/time` - Test API endpoint
+### Request Logging Middleware
 
-5. Stop the server: Press `Ctrl + C` in the terminal
+-   Logs all incoming requests with timestamp and method
 
----
+------------------------------------------------------------------------
 
-## Testing Your Implementation
+## Running the Server
 
-### Manual Testing Checklist
-- [ ] Server starts without errors
-- [ ] Home page loads at `http://localhost:3000`
-- [ ] About page loads at `/about`
-- [ ] Contact page loads at `/contact`
-- [ ] CSS styles are applied correctly
-- [ ] Custom 404 page appears for invalid URLs
-- [ ] `/api/time` returns JSON with current time
-- [ ] (Bonus) Routes are organized using Express Router
+Navigate to the `starter` directory:
 
----
+    cd starter
 
-## Key Differences from Workshop 02 (Node.js HTTP)
+Install dependencies:
 
-| Aspect | Node.js HTTP (Workshop 02) | Express.js (Workshop 03) |
-|--------|---------------------------|--------------------------|
-| **Setup** | `http.createServer()` | `express()` |
-| **Routing** | Manual if-else chains | Built-in router methods |
-| **Static Files** | Manual file reading with `fs` | `express.static()` middleware |
-| **Response Handling** | `res.writeHead()` + `res.end()` | `res.send()`, `res.json()`, `res.sendFile()` |
-| **Error Handling** | Manual error functions | Error handling middleware |
-| **Code Complexity** | More verbose | Cleaner and shorter |
+    npm install
 
----
+Start the server:
 
-## Common Issues & Troubleshooting
+    node server.js
 
-### Express Not Found
-**Error:** `Cannot find module 'express'`
-**Solution:** 
-- Run `npm install` in the starter directory
-- Make sure `package.json` exists
+Open in browser:
 
-### Port Already in Use
-**Error:** `EADDRINUSE: address already in use`
-**Solution:** 
-- Stop any other server running on port 3000
-- Or change the PORT constant in `server.js`
+-   http://localhost:3000
+-   http://localhost:3000/about
+-   http://localhost:3000/contact
+-   http://localhost:3000/api/time
+-   http://localhost:3000/api/info
 
-### CSS Not Loading
-**Problem:** HTML loads but no styling appears
-**Check:**
-- The CSS file path in HTML matches the public directory structure
-- `express.static()` is configured correctly
-- The middleware is placed before route handlers
+Stop the server with:
 
-### 404 Page Not Showing
-**Check:**
-- 404 middleware is placed **after** all other routes
-- `404.html` exists in the `public` folder
+    Ctrl + C
 
----
+------------------------------------------------------------------------
 
-## Learning Resources
+## Key Concepts Demonstrated
 
-- [Express.js Official Documentation](https://expressjs.com/)
-- [Express Routing Guide](https://expressjs.com/en/guide/routing.html)
-- [Express Middleware Guide](https://expressjs.com/en/guide/using-middleware.html)
-- [Express API Reference](https://expressjs.com/en/4x/api.html)
+-   Express application creation
+-   Middleware order importance
+-   Static file serving
+-   Route handling with `app.get()`
+-   JSON responses using `res.json()`
+-   Modular API routing using `express.Router()`
+-   Custom error handling middleware
 
----
+------------------------------------------------------------------------
 
-## Submission
+## Technologies Used
 
-After completing all tasks:
-1. Test your server thoroughly
-2. Commit your changes:
-   ```bash
-   git add .
-   git commit -m "Complete Workshop 03 - Express Server"
-   git push origin main
-   ```
-3. Verify your repository on GitHub
+-   Node.js
+-   Express.js
 
----
+------------------------------------------------------------------------
 
-## Need Help?
+## Conclusion
 
-- Review the comments in `server.js` for detailed hints
-- Refer to `requirement.md` for detailed task specifications
-- Consult Express.js documentation
-- Ask your instructor or teaching assistant
+This workshop demonstrates how Express improves structure, readability,
+and scalability compared to manual HTTP server implementation.
 
----
-
-## Next Steps
-
-After completing this workshop, you'll be ready to:
-- Build more complex Express applications
-- Learn about template engines (EJS, Handlebars, Pug)
-- Implement RESTful APIs with full CRUD operations
-- Add database integration (MongoDB, PostgreSQL)
-- Explore authentication and authorization
-
----
-
-**Good luck and happy coding! 🚀**
+The project was successfully migrated from a Node.js HTTP server to a
+structured Express application with modular routing and proper
+middleware handling.
